@@ -7,7 +7,7 @@ def main():
     resp = requests.get("https://api.github.com/repos/mohankumargupta/cookiecutter-templates/git/trees/main")
     data = json.loads(resp.text)
     options = [entry['path'][len('cookiecutter-'):] for entry in data['tree'] if entry['type'] == 'tree' and entry['path'].startswith('cookiecutter-')]
-    print(options)
+    #print(options)
     options.reverse()
     selected_item = iterfzf(options, __extra__=["--exact"])
     print(f"Selected item: {selected_item}")
